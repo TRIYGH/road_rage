@@ -15,11 +15,11 @@ def print_them():
     print("\n"*65)
     spaces = car[0][2]
     print(' '*spaces, end='')
-    print("D###D", end='')
-    spaces = car[1][2] - car[0][2]
-    print(' '*spaces,"D###D", end='')
-    spaces = car[2][2] - car[1][2]
-    print(' '*spaces,"D###D", end='')
+    print("00000", end='')
+    spaces = car[1][2] - car[0][2] - 5
+    print(' '*spaces,"11111", end='')
+    spaces = car[2][2] - car[1][2] - 5
+    print(' '*spaces,"22222", end='')
     input()
 
 
@@ -30,7 +30,8 @@ def check_distance(min_dist):
         dist = car[i+1][2] - car[i][2]     # speed, accel, loc
         dist -= 4
         if dist < min_dist:
-            car[i][0] = car[i+1][0]
+            if car[i][0] > car[i+1][0]:
+                car[i][0] = car[i+1][0]
             # car[i][0] -= 10
         if dist == 1:
             car[i][0] = 0
@@ -52,7 +53,7 @@ def random_slowdown():
 
 while True:
     print_them()
-    check_distance(5)
+    check_distance(3)
     update_car_position()
     random_slowdown()
 
