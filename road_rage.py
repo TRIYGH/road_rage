@@ -1,4 +1,4 @@
-
+from Car import Car
 import random
 
 # car = []
@@ -70,7 +70,7 @@ def switch_car_positions():
         count -= 1  #29 is now 28
     car[0] = temp_holdr    #
     car[0][2] = 4
-    
+
 
 
 def check_valid_position():
@@ -95,3 +95,5 @@ while True:
 
 #==========
     # position on road is 5 thru 1000
+
+ferari = Car()
