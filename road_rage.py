@@ -1,4 +1,3 @@
-# W3D4 road_rage Project
 
 import random
 
@@ -12,28 +11,30 @@ car=[]  #[0,1,2]
 car.append([0,2,12])
 car.append([0,2,19])
 car.append([0,2,26])
+num_cars = len(car)
+
 # car[0] = [0,2,5]   # speed, accel, loc
 # car[1] = [0,2,19]
 # car[2] = [0,2,26]
 
 
 def print_them():
-    # print(car[0], car[1], car[2])
-    # input()
-    print("\n"*65)
-    spaces = car[0][2]
-    print(' '*spaces, end='')
-    print("00000", end='')
-    spaces = car[1][2] - car[0][2] - 5
-    print(' '*spaces,"11111", end='')
-    spaces = car[2][2] - car[1][2] - 5
-    print(' '*spaces,"22222",car, end='')
+    print(car[0], car[1], car[2])
     input()
+    # print("\n"*65)
+    # spaces = car[0][2]
+    # print(' '*spaces, end='')
+    # print("00000", end='')
+    # spaces = car[1][2] - car[0][2] - 5
+    # print(' '*spaces,"11111", end='')
+    # spaces = car[2][2] - car[1][2] - 5
+    # print(' '*spaces,"22222",car, end='')
+    # input()
 
 
 # print them
 def check_distance(min_dist):
-    for i in range(2):
+    for i in range((num_cars-1)):
         dist = car[i+1][2] - car[i][2]     # speed, accel, loc
         dist -= 4
         if dist < min_dist:
@@ -61,17 +62,19 @@ def update_car_position():
 
 
 def switch_car_positions():
-    temp_holdr = car[29]
-    count = 29
+    # pass
+    temp_holdr = car[num_cars-1]#29
+    count = (num_cars-1)#29
     while count > 0:
-        car[count] = car[count-1]
-        count -= 1
-    car[0] = car[29]
+        car[count] = car[count-1]#  29 = 28
+        count -= 1  #29 is now 28
+    car[0] = temp_holdr    #
+    car[0][2] = 4
+    
 
 
 def check_valid_position():
-    # for each in car:
-    if car[29][2] > 999:
+    if car[num_cars-1][2] > 999:
         switch_car_positions()
 
 
