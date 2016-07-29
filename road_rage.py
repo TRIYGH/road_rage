@@ -63,14 +63,14 @@ def update_car_position():
 
 def switch_car_positions():
     # pass
-    temp_holdr = car[num_cars-1]#29
-    count = (num_cars-1)#29
+    temp_holdr = car[num_cars-1]
+    count = (num_cars-1)
     while count > 0:
-        car[count] = car[count-1]#  29 = 28
-        count -= 1  #29 is now 28
-    car[0] = temp_holdr    #
+        car[count] = car[count-1]
+        count -= 1
+    car[0] = temp_holdr
     car[0][2] = 4
-    
+
 
 
 def check_valid_position():
