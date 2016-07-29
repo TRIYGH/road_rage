@@ -1,4 +1,4 @@
-
+from Car import Car
 import random
 
 # car = []
@@ -95,3 +95,5 @@ while True:
 
 #==========
     # position on road is 5 thru 1000
+
+ferari = Car()
