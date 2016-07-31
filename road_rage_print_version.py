@@ -1,6 +1,5 @@
-#W3D4  road project
+# W3D4  road project
 
-import numpy as np
 import matplotlib.animation as animation
 import seaborn
 import statistics as st
@@ -13,14 +12,14 @@ diff_bt_cars = []
 speeds = []
 avg_speed = 0
 
-#initialize cars
+# initialize cars
 for i in range(30):
-    car.append([0,2,(12+(7*i))])       # [ speed, accel, loc ]
+    car.append([0, 2, (12+(7*i))])       # [ speed, accel, loc ]
 
 num_cars = len(car)
 
 
-def plot_it(x,y):
+def plot_it(x, y):
     plt.title('Car Traffic Simulation (# of cars = 30)')
     plt.xlabel('Distance bt Cars')
     plt.ylabel('Velocity (km/h)')
@@ -31,7 +30,7 @@ def plot_it(x,y):
 
 
 def plot_them():
-    for i in range(1,num_cars):
+    for i in range(1, num_cars):
         diff_bt_cars.append(car[i][2] - car[i-1][2] - 4)
         speeds.append(car[i][0])
     plot_it(diff_bt_cars, speeds)
@@ -50,25 +49,26 @@ def std_dev(avgs_list):
     ymin, ymax = plt.ylim()
 
     plt.vlines(mean, ymin, ymax, color='red')
-    plt.vlines([mean - 2 * stdev, mean - stdev, mean + stdev, mean + 2 * stdev], ymin, ymax, color='red', linestyles='dashed')
+    plt.vlines([mean - 2 * stdev, mean - stdev, mean + stdev, mean + 2 * stdev],
+               ymin, ymax, color='red', linestyles='dashed')
     plt.show()
 
 
 def print_them():
     print("\n"*65)
     spaces = car[0][2]
-    print(' '*spaces, end='')                   #print FIRST car
+    print(' '*spaces, end='')                   # print FIRST car
     print('0'*6, end='')
 
-    for i in range(1,num_cars):
-        spaces = car[i][2] - car[i-1][2] - 5    #print spaces
+    for i in range(1, num_cars):
+        spaces = car[i][2] - car[i-1][2] - 5    # print spaces
         print(' '*spaces, end='')
         if i < 10:
             print(str(i)*6, end='')
-        else:                                   #print car x
+        else:                                   # print car x
             print(str(i)*3, end='')
 
-    spaces = car[29][2] - car[28][2] - 5    #print spaces
+    spaces = car[29][2] - car[28][2] - 5    # print spaces
     print(' '*spaces, end='')
     print('30'*3)
 
@@ -100,15 +100,15 @@ def check_distance(min_dist):
 
 def update_car_speed():
     for each in car:
-        each[0]+=each[1]
+        each[0] += each[1]
         if each[0] > 33:
             each[0] = 33
 
 
-#wait one second !!!!!!
+# wait one second !!!!!!
 def update_car_position():
     for each in car:
-        each[2]+=each[0]
+        each[2] += each[0]
 
 
 def switch_car_positions():
@@ -129,9 +129,9 @@ def check_valid_position():
 
 def random_slowdown():
     for each in car:
-        x = random.randint(0,9)
+        x = random.randint(0, 9)
         if x == 5:
-            each[0] -= 4   #IF you change this to each[1] it accels like crazy
+            each[0] -= 4
             if each[0] < 0:
                 each[0] = 0
 
@@ -147,7 +147,7 @@ while loops < 100:
 
     print_them()
 
-    if inital_acceleration_period == False:
+    if inital_acceleration_period is False:
         avg_speed_list.append(calc_averages(avg_speed))
         avg_speed = 0
 
