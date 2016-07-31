@@ -24,7 +24,7 @@ def plot_it(x,y):
     plt.title('Car Traffic Simulation (# of cars = 30)')
     plt.xlabel('Distance bt Cars')
     plt.ylabel('Velocity (km/h)')
-    plt.xlim((0, 100))
+    plt.xlim((0, 40))
     plt.ylim((0, 34))
     plt.scatter(x, y, marker='s', cmap='set1', alpha=0.5)
     plt.show()
@@ -34,6 +34,7 @@ def plot_them():
     for i in range(1,num_cars):
         diff_bt_cars.append(car[i][2] - car[i-1][2] - 4)
         speeds.append(car[i][0])
+    plot_it(diff_bt_cars, speeds)
 
 
 def averages_graph(avgs_list):
@@ -156,9 +157,9 @@ while loops < 100:
     check_valid_position()
     random_slowdown()
 
-# plot_them()
 input("ENTER")
-print(sum(avg_speed_list))
+# print(sum(avg_speed_list))
+plot_them()
 
 averages_graph(avg_speed_list)
 
