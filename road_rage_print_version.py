@@ -12,7 +12,7 @@ diff_bt_cars = []
 speeds = []
 avg_speed = 0
 
-# initialize cars
+# initialize cars 
 for i in range(30):
     car.append([0, 2, (12+(7*i))])       # [ speed, accel, loc ]
 
